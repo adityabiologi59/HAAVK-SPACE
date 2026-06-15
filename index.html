@@ -18,9 +18,12 @@
                 
                 <nav class="nav-main">
                     <a href="#collections">Collections</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                    <a href="login/index.html" class="nav-cta">Login</a>
+                    <a href="#about">Our Story</a>
+                    <a href="#contact">Visit Us</a>
+                    <p id="userInfo" style="margin: 0; font-size: 0.9rem; color: #A69080;">Belum login</p>
+                    <div id="authArea">
+                        <button onclick="goLogin()" class="nav-cta">Login</button>
+                    </div>
                 </nav>
                 
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -38,11 +41,11 @@
         <button class="mobile-nav-close" id="mobileNavClose">×</button>
         <ul class="mobile-nav-links">
             <li><a href="#collections">Collections</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#contact">Visit Us</a></li>
         </ul>
         <div class="mobile-nav-cta">
-            <a href="login/index.html" class="btn-primary">Login</a>
+            <button onclick="goLogin()" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Login</button>
         </div>
     </nav>
     
@@ -64,7 +67,9 @@
         </div>
         <div class="hero-image">
             <div class="hero-slide active">
-                <img src="images/hero-1.jpg" alt="Golden jewelry collection" onerror="this.src='images/placeholder.jpg'">
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #B8860B 0%, #D4A853 100%); display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 5rem; color: rgba(255,255,255,0.3);">✨</span>
+                </div>
             </div>
         </div>
     </section>
@@ -75,7 +80,9 @@
             <div class="featured-grid">
                 <div class="featured-image-wrapper">
                     <div class="featured-image">
-                        <img src="images/featured.jpg" alt="Featured piece" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #D4A853 0%, #B8860B 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 8rem; opacity: 0.8;">💎</span>
+                        </div>
                     </div>
                     <div class="featured-badge">Exclusive</div>
                 </div>
@@ -125,7 +132,9 @@
             <div class="collections-grid">
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/collection-1.jpg" alt="Bridal collection" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 4rem;">💍</span>
+                        </div>
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">Bridal</h3>
@@ -135,7 +144,9 @@
                 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/collection-2.jpg" alt="Daily wear" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #FFE4B5 0%, #D4A853 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 4rem;">✨</span>
+                        </div>
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">Daily Wear</h3>
@@ -145,7 +156,9 @@
                 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/collection-3.jpg" alt="Statement pieces" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 4rem;">👑</span>
+                        </div>
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">Statement</h3>
@@ -155,7 +168,9 @@
                 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/collection-4.jpg" alt="Heritage" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #CD7F32 0%, #A0826D 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 4rem;">🏛️</span>
+                        </div>
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">Heritage</h3>
@@ -165,7 +180,9 @@
                 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/collection-5.jpg" alt="Mens collection" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #696969 0%, #2F4F4F 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 4rem;">🔗</span>
+                        </div>
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">For Men</h3>
@@ -204,10 +221,14 @@
                 </div>
                 <div class="story-images">
                     <div class="story-image">
-                        <img src="images/about-1.jpg" alt="Craftsmanship" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 5rem; color: rgba(255,255,255,0.3);">🛠️</span>
+                        </div>
                     </div>
                     <div class="story-image">
-                        <img src="images/about-2.jpg" alt="Jewelry details" onerror="this.src='images/placeholder.jpg'">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #D4A853 0%, #B8860B 100%); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 5rem; color: rgba(255,255,255,0.3);">💎</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -401,7 +422,9 @@
             </div>
         </div>
     </footer>
-    
+
     <script src="js/script.js"></script>
+    <script src="templatemo-maison-doree.js"></script>
+    <script src="login/js/welcome.js"></script>
 </body>
 </html>
