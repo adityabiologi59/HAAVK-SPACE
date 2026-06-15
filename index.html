@@ -1,60 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-    <title>Delayota</title>
-<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAAVK SPACE - Luxury Jewelry Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body bgcolor="CCFFFF">
-   <div class="header">
-    <div class="jarak">
-  <h2>Belajar Membuat Website apik dengan HTML, no css, dan no layout</h2>
-    </div>
-   </div>
-   <div class="menu">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="#">Blog</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</div>
-<div class="content">
-    <div class="jarak">
-        <div class="kiri">
-            <div class="border">
-                <div class="jarak">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing</p>
-                    <button class="btn">Read More ..</button>
-                </div>
-            </div>
-            <div class="border">
-                <div class="jarak">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing</p>
-                    <button class="btn">Read More ..</button>
-                </div>
-            </div>
-            </div>
-        <div class="kanan">
-            <div class="jarak">
-                <h3>CATEGORY</h3>
-                <hr/>
-                <p><a href="#" class="undecor">HTML</a></p>
-                <p><a href="#" class="undecor">CSS</a></p>
-                <p><a href="#" class="undecor">BOOTSTRAP</a></p>
-                <p><a href="#" class="undecor">PHP</a></p>
-                <p><a href="#" class="undecor">MYSQL</a></p>
-                <p><a href="#" class="undecor">Jquery</a></p>
-                <p><a href="#" class="undecor">Ajax</a></p>
+<body>
+    <!-- Header Navigation -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">HAAVK <span>SPACE</span></a>
+                
+                <nav class="nav-main">
+                    <a href="#collections">Collections</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="login/index.html" class="nav-cta">Login</a>
+                </nav>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="login/index.html" class="btn-primary">Login</a>
         </div>
-</div>
-
-<div class="footer">
-    <div class="jarak">
-        <p>copyright 2021 codekop all reserved</p>
-    </div>
-</div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Premium Gold Jewelry</p>
+            <h1 class="heading-display hero-title">
+                Fortune is More <em>Important</em>
+            </h1>
+            <p class="text-body hero-description">
+                Discover our exclusive collection of handcrafted gold jewelry, 
+                each piece designed to bring fortune and elegance to your life.
+            </p>
+            <div class="hero-actions">
+                <a href="#collections" class="btn-primary">Explore Now</a>
+                <a href="#about" class="btn-text">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active">
+                <img src="images/hero-1.jpg" alt="Golden jewelry collection" onerror="this.src='images/placeholder.jpg'">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Collection -->
+    <section class="featured-piece">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-image-wrapper">
+                    <div class="featured-image">
+                        <img src="images/featured.jpg" alt="Featured piece" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="featured-badge">Exclusive</div>
+                </div>
+                <div class="featured-content">
+                    <p class="text-label featured-label">Featured Collection</p>
+                    <h2 class="heading-display featured-title">
+                        Premium Gold Selection
+                    </h2>
+                    <p class="text-body featured-description">
+                        Experience luxury with our carefully curated selection of 
+                        premium gold jewelry. Each piece tells a unique story of craftsmanship 
+                        and elegance, designed to make fortune shine through your style.
+                    </p>
+                    <div class="featured-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Material</span>
+                            <span class="detail-value">24K Gold</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Craftsmanship</span>
+                            <span class="detail-value">Handcrafted</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Authenticity</span>
+                            <span class="detail-value">100% Certified</span>
+                        </div>
+                    </div>
+                    <p class="featured-price">Starting from $3,999</p>
+                    <a href="#contact" class="btn-primary">Get More Info</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Collections Grid -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="heading-display section-title">Our Collections</h2>
+                    <p class="text-body section-subtitle">
+                        Discover the perfect piece for every moment
+                    </p>
+                </div>
+            </div>
+            
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/collection-1.jpg" alt="Bridal collection" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Bridal</h3>
+                        <p class="collection-count">Premium Selection</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/collection-2.jpg" alt="Daily wear" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Daily Wear</h3>
+                        <p class="collection-count">Elegant & Timeless</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/collection-3.jpg" alt="Statement pieces" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Statement</h3>
+                        <p class="collection-count">Bold & Luxurious</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/collection-4.jpg" alt="Heritage" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Heritage</h3>
+                        <p class="collection-count">Classic Designs</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/collection-5.jpg" alt="Mens collection" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">For Men</h3>
+                        <p class="collection-count">Sophisticated Style</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="story" id="about">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Our Heritage</p>
+                    <h2 class="heading-display story-title">
+                        Crafting Fortune Through Gold
+                    </h2>
+                    <p class="text-body story-text">
+                        HAAVK SPACE is dedicated to creating exceptional gold jewelry 
+                        that brings prosperity and elegance to your life. Our belief is simple: 
+                        fortune is more important, and luxury should be accessible to everyone 
+                        who appreciates fine craftsmanship.
+                    </p>
+                    <p class="text-body story-text">
+                        Every piece in our collection is meticulously crafted by experienced 
+                        artisans who understand the art of jewelry making. We use only the finest 
+                        materials and techniques to ensure that your jewelry becomes a timeless 
+                        treasure.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">HAAVK Team</p>
+                        <p class="signature-title">Master Artisans</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/about-1.jpg" alt="Craftsmanship" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/about-2.jpg" alt="Jewelry details" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <p class="text-label">Client Stories</p>
+                <h2 class="heading-display testimonials-title">Trusted by Many</h2>
+                <p class="text-body testimonials-subtitle">Hear what our customers say about their experience</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Absolutely stunning! The quality of the gold jewelry is exceptional, and the craftsmanship is evident in every detail.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Sarah Johnson</p>
+                            <p class="testimonial-detail">Verified Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Best investment! I've purchased multiple pieces and each one is more beautiful than the last.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Michael Chen</p>
+                            <p class="testimonial-detail">Verified Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Exceptional service and gorgeous jewelry. Highly recommended to anyone looking for premium quality!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">E</div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Emily Rodriguez</p>
+                            <p class="testimonial-detail">Verified Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Get In Touch</p>
+                    <h2 class="heading-display contact-title">
+                        Contact Us
+                    </h2>
+                    <p class="text-body contact-text">
+                        Have questions about our collection or need assistance? 
+                        We're here to help make your shopping experience exceptional.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Address</p>
+                            <p class="contact-item-value">
+                                123 Golden Street<br>
+                                Luxury District, NY 10001
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Hours</p>
+                            <p class="contact-item-value">
+                                Monday – Saturday, 10:00 AM to 06:00 PM<br>
+                                Sunday, By Appointment
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Contact</p>
+                            <p class="contact-item-value">
+                                <a href="tel:+1234567890">+1 (234) 567-890</a><br>
+                                <a href="mailto:info@haavkspace.com">info@haavkspace.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <h3 class="form-title">Send Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Message</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your inquiry..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p class="footer-logo">HAAVK <span>SPACE</span></p>
+                    <p class="footer-tagline">
+                        Premium gold jewelry where fortune meets elegance. 
+                        Handcrafted with excellence since day one.
+                    </p>
+                    <div class="footer-contact-info">
+                        <p>123 Golden Street, Luxury District</p>
+                        <p>New York, NY 10001</p>
+                        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        <p><a href="mailto:info@haavkspace.com">info@haavkspace.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Collections</h4>
+                    <ul class="footer-links">
+                        <li><a href="#collections">All Collections</a></li>
+                        <li><a href="#">Bridal</a></li>
+                        <li><a href="#">Daily Wear</a></li>
+                        <li><a href="#">Statement</a></li>
+                        <li><a href="#">Men's</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Craftsmanship</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Custom Design</a></li>
+                        <li><a href="#">Care Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 HAAVK SPACE. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
 </html>
