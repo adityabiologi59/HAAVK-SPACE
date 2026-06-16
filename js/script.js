@@ -90,3 +90,43 @@ document.querySelectorAll('section:not(.hero)').forEach(section => {
    section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
    observer.observe(section);
 });
+
+// ===== LOGIN FUNCTIONALITY =====
+// Check login status on page load
+function checkLoginStatus() {
+   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+   const userEmail = localStorage.getItem('userEmail');
+   const authArea = document.getElementById('authArea');
+   const userInfo = document.getElementById('userInfo');
+   
+   if (isLoggedIn && userEmail && authArea && userInfo) {
+      // User is logged in
+      userInfo.textContent = `Welcome, ${userEmail.split('@')[0]}`;
+      authArea.innerHTML = '<button onclick="logout()" class="nav-cta">Logout</button>';
+   }
+}
+
+// Navigate to login page
+function goLogin() {
+   window.location.href = './login/index.html';
+}
+
+// Logout function
+function logout() {
+   localStorage.removeItem('isLoggedIn');
+   localStorage.removeItem('userEmail');
+   localStorage.removeItem('rememberMe');
+   
+   const authArea = document.getElementById('authArea');
+   const userInfo = document.getElementById('userInfo');
+   
+   if (authArea && userInfo) {
+      userInfo.textContent = 'Belum login';
+      authArea.innerHTML = '<button onclick="goLogin()" class="nav-cta">Login</button>';
+   }
+   
+   alert('You have been logged out!');
+}
+
+// Initialize login status when page loads
+window.addEventListener('load', checkLoginStatus);
