@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HAAVK SPACE</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>HAAVK <span>SPACE</span></h2>
+            </div>
+            
+            <nav class="admin-nav">
+                <a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">📊 Dashboard</a>
+                <a href="#products" class="nav-link" onclick="showSection('products')">💎 Products</a>
+                <a href="#orders" class="nav-link" onclick="showSection('orders')">📦 Orders</a>
+                <a href="#customers" class="nav-link" onclick="showSection('customers')">👥 Customers</a>
+                <a href="#analytics" class="nav-link" onclick="showSection('analytics')">📈 Analytics</a>
+            </nav>
+            
+            <div class="logout">
+                <button onclick="adminLogout()" class="btn-logout">🚪 Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <h1>Admin Dashboard</h1>
+                <div class="user-info" id="userInfo">Admin</div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Products</h3>
+                        <div class="stat-number">24</div>
+                        <p class="stat-desc">Active jewelry items</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Total Orders</h3>
+                        <div class="stat-number">156</div>
+                        <p class="stat-desc">This month</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Total Customers</h3>
+                        <div class="stat-number">892</div>
+                        <p class="stat-desc">Registered users</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Revenue</h3>
+                        <div class="stat-number">$47.2K</div>
+                        <p class="stat-desc">This month</p>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="card">
+                        <h2>Recent Orders</h2>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1001</td>
+                                    <td>John Doe</td>
+                                    <td>$2,450</td>
+                                    <td><span class="status completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#1002</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>$3,200</td>
+                                    <td><span class="status processing">Processing</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#1003</td>
+                                    <td>Mike Chen</td>
+                                    <td>$1,800</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card">
+                        <h2>Top Products</h2>
+                        <ul class="product-list">
+                            <li>
+                                <div class="product-info">
+                                    <h4>Gold Bridal Ring</h4>
+                                    <p>45 sold this month</p>
+                                </div>
+                                <span class="product-status">In Stock</span>
+                            </li>
+                            <li>
+                                <div class="product-info">
+                                    <h4>Diamond Necklace</h4>
+                                    <p>38 sold this month</p>
+                                </div>
+                                <span class="product-status">In Stock</span>
+                            </li>
+                            <li>
+                                <div class="product-info">
+                                    <h4>Statement Earrings</h4>
+                                    <p>32 sold this month</p>
+                                </div>
+                                <span class="product-status">Low Stock</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="products" class="section" style="display: none;">
+                <div class="card">
+                    <h2>Products Management</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#P001</td>
+                                <td>Gold Bridal Ring</td>
+                                <td>Bridal</td>
+                                <td>$3,999</td>
+                                <td>12</td>
+                                <td><span class="status completed">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P002</td>
+                                <td>Diamond Necklace</td>
+                                <td>Daily Wear</td>
+                                <td>$2,450</td>
+                                <td>8</td>
+                                <td><span class="status completed">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P003</td>
+                                <td>Statement Earrings</td>
+                                <td>Statement</td>
+                                <td>$1,800</td>
+                                <td>3</td>
+                                <td><span class="status pending">Low Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>#P004</td>
+                                <td>Heritage Bracelet</td>
+                                <td>Heritage</td>
+                                <td>$2,200</td>
+                                <td>15</td>
+                                <td><span class="status completed">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="section" style="display: none;">
+                <div class="card">
+                    <h2>Orders Management</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Name</th>
+                                <th>Order Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1001</td>
+                                <td>John Doe</td>
+                                <td>2026-06-10</td>
+                                <td>$2,450</td>
+                                <td><span class="status completed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#1002</td>
+                                <td>Sarah Johnson</td>
+                                <td>2026-06-12</td>
+                                <td>$3,200</td>
+                                <td><span class="status processing">Processing</span></td>
+                            </tr>
+                            <tr>
+                                <td>#1003</td>
+                                <td>Mike Chen</td>
+                                <td>2026-06-14</td>
+                                <td>$1,800</td>
+                                <td><span class="status pending">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>#1004</td>
+                                <td>Emily Rodriguez</td>
+                                <td>2026-06-15</td>
+                                <td>$4,100</td>
+                                <td><span class="status processing">Processing</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Customers Section -->
+            <section id="customers" class="section" style="display: none;">
+                <div class="card">
+                    <h2>Customers Management</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Total Purchases</th>
+                                <th>Member Since</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#C001</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>$8,900</td>
+                                <td>2025-12-01</td>
+                            </tr>
+                            <tr>
+                                <td>#C002</td>
+                                <td>Sarah Johnson</td>
+                                <td>sarah@example.com</td>
+                                <td>$12,450</td>
+                                <td>2025-11-15</td>
+                            </tr>
+                            <tr>
+                                <td>#C003</td>
+                                <td>Mike Chen</td>
+                                <td>mike@example.com</td>
+                                <td>$5,320</td>
+                                <td>2026-01-20</td>
+                            </tr>
+                            <tr>
+                                <td>#C004</td>
+                                <td>Emily Rodriguez</td>
+                                <td>emily@example.com</td>
+                                <td>$15,600</td>
+                                <td>2025-10-05</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="section" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Page Views</h3>
+                        <div class="stat-number">24.5K</div>
+                        <p class="stat-desc">This month</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Unique Visitors</h3>
+                        <div class="stat-number">8.2K</div>
+                        <p class="stat-desc">This month</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Conversion Rate</h3>
+                        <div class="stat-number">3.2%</div>
+                        <p class="stat-desc">Increase from last month</p>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <h3>Avg. Order Value</h3>
+                        <div class="stat-number">$302</div>
+                        <p class="stat-desc">Per customer</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Monthly Performance</h2>
+                    <p style="color: #999; padding: 2rem; text-align: center;">📊 Analytics chart would be displayed here with Chart.js or similar library</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
