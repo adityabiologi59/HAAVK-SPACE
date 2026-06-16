@@ -1,38 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - HAAVK SPACE</title>
+    <title>Masuk / Daftar - HAAVK SPACE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="wrapper">
-        <form id="loginForm" onsubmit="handleLogin(event)">
-            <h2>🔐 Login</h2>
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)" style="display: none;">
+            <h2>🔐 Masuk</h2>
             <div class="input-field">
                 <input type="email" id="email" name="email" required>
-                <label>Enter your email</label>
+                <label>Masukkan email Anda</label>
             </div>
             <div class="input-field">
                 <input type="password" id="password" name="password" required>
-                <label>Enter your password</label>
+                <label>Masukkan password Anda</label>
             </div>
             <div class="forget">
                 <label for="remember">
                     <input type="checkbox" id="remember" name="remember">
-                    <p>Remember me</p>
+                    <p>Ingat saya</p>
                 </label>
-                <a href="#">Forgot password?</a>
+                <a href="#">Lupa password?</a>
             </div>
-            <button type="submit">Log In</button>
+            <button type="submit">Masuk</button>
             <div class="register">
-                <p>Don't have an account? <a href="#">Register</a></p>
+                <p>Belum punya akun? <a href="javascript:void(0)" onclick="toggleForms()">Daftar</a></p>
+            </div>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" onsubmit="handleRegister(event)">
+            <h2>📝 Daftar Akun</h2>
+            <div class="input-field">
+                <input type="text" id="fullname" name="fullname" required>
+                <label>Nama Lengkap</label>
+            </div>
+            <div class="input-field">
+                <input type="email" id="reg_email" name="reg_email" required>
+                <label>Alamat Email</label>
+            </div>
+            <div class="input-field">
+                <input type="tel" id="phone" name="phone">
+                <label>Nomor Telepon</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="reg_password" name="reg_password" required>
+                <label>Password (minimal 6 karakter)</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <label>Konfirmasi Password</label>
+            </div>
+            <div class="terms">
+                <label for="agree_terms">
+                    <input type="checkbox" id="agree_terms" name="agree_terms" required>
+                    <p>Saya setuju dengan <a href="#">Syarat & Ketentuan</a></p>
+                </label>
+            </div>
+            <button type="submit">Daftar</button>
+            <div class="register">
+                <p>Sudah punya akun? <a href="javascript:void(0)" onclick="toggleForms()">Masuk</a></p>
             </div>
         </form>
     </div>
 
     <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+            registerForm.style.display = registerForm.style.display === 'none' ? 'block' : 'none';
+        }
+
         function handleLogin(event) {
             event.preventDefault();
             
@@ -42,21 +85,84 @@
             
             // Basic validation
             if (!email || !password) {
-                alert('Please fill in all fields');
+                alert('Mohon isi semua kolom');
                 return;
             }
             
-            // Store login info (in real app, this would be server-side)
-            if (password.length >= 6) {
-                localStorage.setItem('isLoggedIn', 'true');
-                localStorage.setItem('userEmail', email);
-                localStorage.setItem('rememberMe', remember);
-                
-                alert('Login successful! Redirecting...');
-                window.location.href = '../index.html';
-            } else {
-                alert('Password must be at least 6 characters');
+            // Check if user exists in localStorage
+            const users = JSON.parse(localStorage.getItem('haavk_users') || '[]');
+            const user = users.find(u => u.email === email);
+            
+            if (!user) {
+                alert('Email tidak terdaftar. Silakan daftar terlebih dahulu.');
+                return;
             }
+            
+            if (user.password !== password) {
+                alert('Password salah!');
+                document.getElementById('password').value = '';
+                return;
+            }
+            
+            // Store login info
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', user.fullname);
+            localStorage.setItem('rememberMe', remember);
+            
+            alert('Masuk berhasil! Mengalihkan...');
+            window.location.href = '../index.html';
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('reg_email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('reg_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            // Validation
+            if (!fullname || !email || !password || !confirmPassword) {
+                alert('Mohon isi semua kolom yang wajib');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('Password minimal harus 6 karakter');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Password tidak cocok!');
+                return;
+            }
+            
+            // Check if email already exists
+            const users = JSON.parse(localStorage.getItem('haavk_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                alert('Email sudah terdaftar!');
+                return;
+            }
+            
+            // Add new user
+            const newUser = {
+                fullname: fullname,
+                email: email,
+                phone: phone,
+                password: password,
+                createdAt: new Date().toISOString()
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('haavk_users', JSON.stringify(users));
+            
+            alert('Akun berhasil dibuat! Silakan masuk.');
+            toggleForms();
+            
+            // Clear form
+            document.getElementById('registerForm').reset();
         }
         
         // Check if already logged in
@@ -64,6 +170,9 @@
             if (localStorage.getItem('isLoggedIn')) {
                 window.location.href = '../index.html';
             }
+            
+            // Show login form by default
+            document.getElementById('loginForm').style.display = 'block';
             
             // Auto-fill email if "Remember me" was checked
             const rememberMe = localStorage.getItem('rememberMe');

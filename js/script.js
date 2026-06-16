@@ -1,132 +1,188 @@
-// Header scroll effect
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-   if (window.scrollY > 100) {
-      header.classList.add('scrolled');
-   } else {
-      header.classList.remove('scrolled');
-   }
-});
-
-// Mobile navigation
+// Mobile Navigation Toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileNav = document.getElementById('mobileNav');
 const mobileOverlay = document.getElementById('mobileOverlay');
 const mobileNavClose = document.getElementById('mobileNavClose');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
 
-function openMobileNav() {
-   mobileNav.classList.add('active');
-   mobileOverlay.classList.add('active');
-   document.body.style.overflow = 'hidden';
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+        mobileOverlay.classList.add('active');
+    });
 }
 
-function closeMobileNav() {
-   mobileNav.classList.remove('active');
-   mobileOverlay.classList.remove('active');
-   document.body.style.overflow = '';
+if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
 }
 
-menuToggle.addEventListener('click', openMobileNav);
-mobileNavClose.addEventListener('click', closeMobileNav);
-mobileOverlay.addEventListener('click', closeMobileNav);
+if (mobileOverlay) {
+    mobileOverlay.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
+}
 
-mobileNavLinks.forEach(link => {
-   link.addEventListener('click', closeMobileNav);
+// Close mobile menu when link is clicked
+const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-   anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      if (href === '#') {
-         window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-         });
-         return;
-      }
-      const target = document.querySelector(href);
-      if (target) {
-         const headerHeight = header.offsetHeight;
-         const targetPosition = target.offsetTop - headerHeight;
-         window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-         });
-      }
-   });
-});
+// Authentication Status
+function updateAuthStatus() {
+    const userInfo = document.getElementById('userInfo');
+    const authArea = document.getElementById('authArea');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
 
-// Form submission
+    if (isLoggedIn) {
+        userInfo.textContent = `Selamat datang, ${userName || userEmail || 'User'}`;
+        authArea.innerHTML = '<button onclick="handleLogout()" class="nav-cta">Keluar</button>';
+    } else {
+        userInfo.textContent = 'Belum login';
+        authArea.innerHTML = '<button onclick="goLogin()" class="nav-cta">Masuk</button>';
+    }
+}
+
+function goLogin() {
+    window.location.href = './login/index.html';
+}
+
+function handleLogout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    updateAuthStatus();
+    alert('Anda telah keluar dari akun.');
+}
+
+// Initialize auth status on page load
+window.addEventListener('load', updateAuthStatus);
+
+// Contact Form Handler
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-   contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will contact you soon.');
-      contactForm.reset();
-   });
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        
+        // Validate form
+        if (!name || !email || !message) {
+            alert('Mohon isi semua kolom yang wajib diisi');
+            return;
+        }
+        
+        // Store message (in real app, this would be sent to server)
+        const messages = JSON.parse(localStorage.getItem('haavk_messages') || '[]');
+        const newMessage = {
+            id: Date.now(),
+            name: name,
+            email: email,
+            phone: phone,
+            message: message,
+            timestamp: new Date().toISOString()
+        };
+        messages.push(newMessage);
+        localStorage.setItem('haavk_messages', JSON.stringify(messages));
+        
+        alert('Pesan Anda telah dikirim! Kami akan menghubungi Anda segera.');
+        contactForm.reset();
+    });
 }
 
-// Intersection Observer for scroll animations
-const observerOptions = {
-   threshold: 0.1,
-   rootMargin: '0px 0px -50px 0px'
-};
+// Initialize Map
+function initMap() {
+    // Koordinat Yogyakarta: -7.800301, 110.395510
+    const yogyakartaCoords = [-7.800301, 110.395510];
+    
+    // Create map centered on Yogyakarta
+    const map = L.map('map').setView(yogyakartaCoords, 15);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    
+    // Add marker
+    const marker = L.marker(yogyakartaCoords).addTo(map);
+    marker.bindPopup(`
+        <div style="text-align: center; font-family: 'DM Sans', sans-serif;">
+            <h3 style="margin: 0 0 10px 0; color: #B8860B;">HAAVK SPACE</h3>
+            <p style="margin: 5px 0; font-size: 0.9rem;">Yogyakarta, Indonesia</p>
+            <p style="margin: 5px 0; font-size: 0.85rem; color: #666;">
+                Perhiasan Emas Premium
+            </p>
+            <p style="margin: 10px 0 0 0; font-size: 0.85rem;">
+                <a href="tel:+628123456789" style="color: #B8860B; text-decoration: none;">+62 (812) 345-6789</a>
+            </p>
+        </div>
+    `).openPopup();
+    
+    // Add custom icon style
+    const customIcon = L.divIcon({
+        className: 'custom-marker',
+        html: `<div style="
+            background: linear-gradient(135deg, #B8860B 0%, #D4A853 100%);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+            border: 3px solid white;
+        ">📍</div>`,
+        iconSize: [40, 40],
+        popupAnchor: [0, -20]
+    });
+    
+    // Replace default marker with custom icon
+    marker.setIcon(customIcon);
+}
 
-const observer = new IntersectionObserver((entries) => {
-   entries.forEach(entry => {
-      if (entry.isIntersecting) {
-         entry.target.style.opacity = '1';
-         entry.target.style.transform = 'translateY(0)';
-      }
-   });
-}, observerOptions);
-
-document.querySelectorAll('section:not(.hero)').forEach(section => {
-   section.style.opacity = '0';
-   section.style.transform = 'translateY(30px)';
-   section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-   observer.observe(section);
+// Initialize map when page loads if map container exists
+window.addEventListener('load', function() {
+    if (document.getElementById('map')) {
+        // Wait a bit for Leaflet to be ready
+        setTimeout(initMap, 100);
+    }
 });
 
-// ===== LOGIN FUNCTIONALITY =====
-// Check login status on page load
-function checkLoginStatus() {
-   const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-   const userEmail = localStorage.getItem('userEmail');
-   const authArea = document.getElementById('authArea');
-   const userInfo = document.getElementById('userInfo');
-   
-   if (isLoggedIn && userEmail && authArea && userInfo) {
-      // User is logged in
-      userInfo.textContent = `Welcome, ${userEmail.split('@')[0]}`;
-      authArea.innerHTML = '<button onclick="logout()" class="nav-cta">Logout</button>';
-   }
-}
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
 
-// Navigate to login page
-function goLogin() {
-   window.location.href = './login/index.html';
-}
-
-// Logout function
-function logout() {
-   localStorage.removeItem('isLoggedIn');
-   localStorage.removeItem('userEmail');
-   localStorage.removeItem('rememberMe');
-   
-   const authArea = document.getElementById('authArea');
-   const userInfo = document.getElementById('userInfo');
-   
-   if (authArea && userInfo) {
-      userInfo.textContent = 'Belum login';
-      authArea.innerHTML = '<button onclick="goLogin()" class="nav-cta">Login</button>';
-   }
-   
-   alert('You have been logged out!');
-}
-
-// Initialize login status when page loads
-window.addEventListener('load', checkLoginStatus);
+// Header sticky effect
+window.addEventListener('scroll', function() {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+        header.style.boxShadow = 'none';
+    }
+});

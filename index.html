@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAAVK SPACE - Luxury Jewelry Boutique</title>
+    <title>HAAVK SPACE - Butik Perhiasan Mewah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,12 +18,12 @@
                 <a href="index.html" class="logo">HAAVK <span>SPACE</span></a>
                 
                 <nav class="nav-main">
-                    <a href="#collections">Collections</a>
-                    <a href="#about">Our Story</a>
-                    <a href="#contact">Visit Us</a>
+                    <a href="#collections">Koleksi</a>
+                    <a href="#about">Tentang Kami</a>
+                    <a href="#contact">Kunjungi Kami</a>
                     <p id="userInfo" style="margin: 0; font-size: 0.9rem; color: #A69080;">Belum login</p>
                     <div id="authArea">
-                        <button onclick="goLogin()" class="nav-cta">Login</button>
+                        <button onclick="goLogin()" class="nav-cta">Masuk</button>
                     </div>
                 </nav>
                 
@@ -40,29 +41,29 @@
     <nav class="mobile-nav" id="mobileNav">
         <button class="mobile-nav-close" id="mobileNavClose">×</button>
         <ul class="mobile-nav-links">
-            <li><a href="#collections">Collections</a></li>
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="#contact">Visit Us</a></li>
+            <li><a href="#collections">Koleksi</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#contact">Kunjungi Kami</a></li>
         </ul>
         <div class="mobile-nav-cta">
-            <button onclick="goLogin()" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Login</button>
+            <button onclick="goLogin()" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Masuk</button>
         </div>
     </nav>
     
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="text-label hero-tagline">Premium Gold Jewelry</p>
+            <p class="text-label hero-tagline">Perhiasan Emas Premium</p>
             <h1 class="heading-display hero-title">
-                Fortune is More <em>Important</em>
+                Keberuntungan Lebih <em>Penting</em>
             </h1>
             <p class="text-body hero-description">
-                Discover our exclusive collection of handcrafted gold jewelry, 
-                each piece designed to bring fortune and elegance to your life.
+                Temukan koleksi eksklusif perhiasan emas buatan tangan kami, 
+                setiap karya dirancang untuk membawa keberuntungan dan elegansi ke hidup Anda.
             </p>
             <div class="hero-actions">
-                <a href="#collections" class="btn-primary">Explore Now</a>
-                <a href="#about" class="btn-text">Learn More</a>
+                <a href="#collections" class="btn-primary">Jelajahi Sekarang</a>
+                <a href="#about" class="btn-text">Pelajari Lebih Lanjut</a>
             </div>
         </div>
         <div class="hero-image">
@@ -84,34 +85,34 @@
                             <span style="font-size: 8rem; opacity: 0.8;">💎</span>
                         </div>
                     </div>
-                    <div class="featured-badge">Exclusive</div>
+                    <div class="featured-badge">Eksklusif</div>
                 </div>
                 <div class="featured-content">
-                    <p class="text-label featured-label">Featured Collection</p>
+                    <p class="text-label featured-label">Koleksi Unggulan</p>
                     <h2 class="heading-display featured-title">
-                        Premium Gold Selection
+                        Pilihan Emas Premium
                     </h2>
                     <p class="text-body featured-description">
-                        Experience luxury with our carefully curated selection of 
-                        premium gold jewelry. Each piece tells a unique story of craftsmanship 
-                        and elegance, designed to make fortune shine through your style.
+                        Rasakan kemewahan dengan pilihan perhiasan emas premium kami yang telah dikurasi dengan cermat. 
+                        Setiap karya menceritakan kisah unik tentang kerajinan tangan dan elegansi, 
+                        dirancang agar keberuntungan bersinar melalui gaya Anda.
                     </p>
                     <div class="featured-details">
                         <div class="detail-row">
                             <span class="detail-label">Material</span>
-                            <span class="detail-value">24K Gold</span>
+                            <span class="detail-value">Emas 24K</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Craftsmanship</span>
-                            <span class="detail-value">Handcrafted</span>
+                            <span class="detail-label">Kerajinan</span>
+                            <span class="detail-value">Buatan Tangan</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Authenticity</span>
-                            <span class="detail-value">100% Certified</span>
+                            <span class="detail-label">Keaslian</span>
+                            <span class="detail-value">100% Tersertifikasi</span>
                         </div>
                     </div>
-                    <p class="featured-price">Starting from $3,999</p>
-                    <a href="#contact" class="btn-primary">Get More Info</a>
+                    <p class="featured-price">Mulai dari Rp 3.999.000</p>
+                    <a href="#contact" class="btn-primary">Dapatkan Info Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -122,9 +123,9 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-header-left">
-                    <h2 class="heading-display section-title">Our Collections</h2>
+                    <h2 class="heading-display section-title">Koleksi Kami</h2>
                     <p class="text-body section-subtitle">
-                        Discover the perfect piece for every moment
+                        Temukan karya sempurna untuk setiap momen
                     </p>
                 </div>
             </div>
@@ -137,8 +138,8 @@
                         </div>
                     </div>
                     <div class="collection-overlay">
-                        <h3 class="collection-name">Bridal</h3>
-                        <p class="collection-count">Premium Selection</p>
+                        <h3 class="collection-name">Pernikahan</h3>
+                        <p class="collection-count">Pilihan Premium</p>
                     </div>
                 </div>
                 
@@ -149,8 +150,8 @@
                         </div>
                     </div>
                     <div class="collection-overlay">
-                        <h3 class="collection-name">Daily Wear</h3>
-                        <p class="collection-count">Elegant & Timeless</p>
+                        <h3 class="collection-name">Sehari-hari</h3>
+                        <p class="collection-count">Elegan & Abadi</p>
                     </div>
                 </div>
                 
@@ -161,8 +162,8 @@
                         </div>
                     </div>
                     <div class="collection-overlay">
-                        <h3 class="collection-name">Statement</h3>
-                        <p class="collection-count">Bold & Luxurious</p>
+                        <h3 class="collection-name">Pernyataan</h3>
+                        <p class="collection-count">Berani & Mewah</p>
                     </div>
                 </div>
                 
@@ -173,8 +174,8 @@
                         </div>
                     </div>
                     <div class="collection-overlay">
-                        <h3 class="collection-name">Heritage</h3>
-                        <p class="collection-count">Classic Designs</p>
+                        <h3 class="collection-name">Warisan</h3>
+                        <p class="collection-count">Desain Klasik</p>
                     </div>
                 </div>
                 
@@ -185,8 +186,8 @@
                         </div>
                     </div>
                     <div class="collection-overlay">
-                        <h3 class="collection-name">For Men</h3>
-                        <p class="collection-count">Sophisticated Style</p>
+                        <h3 class="collection-name">Pria</h3>
+                        <p class="collection-count">Gaya Canggih</p>
                     </div>
                 </div>
             </div>
@@ -198,25 +199,24 @@
         <div class="container">
             <div class="story-grid">
                 <div class="story-content">
-                    <p class="text-label story-label">Our Heritage</p>
+                    <p class="text-label story-label">Warisan Kami</p>
                     <h2 class="heading-display story-title">
-                        Crafting Fortune Through Gold
+                        Menciptakan Keberuntungan Melalui Emas
                     </h2>
                     <p class="text-body story-text">
-                        HAAVK SPACE is dedicated to creating exceptional gold jewelry 
-                        that brings prosperity and elegance to your life. Our belief is simple: 
-                        fortune is more important, and luxury should be accessible to everyone 
-                        who appreciates fine craftsmanship.
+                        HAAVK SPACE berdedikasi untuk menciptakan perhiasan emas yang luar biasa 
+                        yang membawa kemakmuran dan elegansi ke hidup Anda. Kepercayaan kami sederhana: 
+                        keberuntungan lebih penting, dan kemewahan harus dapat diakses oleh semua orang 
+                        yang menghargai kerajinan tangan yang baik.
                     </p>
                     <p class="text-body story-text">
-                        Every piece in our collection is meticulously crafted by experienced 
-                        artisans who understand the art of jewelry making. We use only the finest 
-                        materials and techniques to ensure that your jewelry becomes a timeless 
-                        treasure.
+                        Setiap karya dalam koleksi kami dibuat dengan teliti oleh pengrajin berpengalaman 
+                        yang memahami seni pembuatan perhiasan. Kami hanya menggunakan material terbaik 
+                        dan teknik untuk memastikan perhiasan Anda menjadi harta karun yang abadi.
                     </p>
                     <div class="story-signature">
-                        <p class="signature-name">HAAVK Team</p>
-                        <p class="signature-title">Master Artisans</p>
+                        <p class="signature-name">Tim HAAVK</p>
+                        <p class="signature-title">Pengrajin Utama</p>
                     </div>
                 </div>
                 <div class="story-images">
@@ -239,9 +239,9 @@
     <section class="testimonials">
         <div class="container">
             <div class="testimonials-header">
-                <p class="text-label">Client Stories</p>
-                <h2 class="heading-display testimonials-title">Trusted by Many</h2>
-                <p class="text-body testimonials-subtitle">Hear what our customers say about their experience</p>
+                <p class="text-label">Kisah Pelanggan</p>
+                <h2 class="heading-display testimonials-title">Dipercaya oleh Banyak Orang</h2>
+                <p class="text-body testimonials-subtitle">Dengarkan apa yang pelanggan kami katakan tentang pengalaman mereka</p>
             </div>
             
             <div class="testimonials-grid">
@@ -250,13 +250,13 @@
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <p class="testimonial-text">
-                        Absolutely stunning! The quality of the gold jewelry is exceptional, and the craftsmanship is evident in every detail.
+                        Sangat menakjubkan! Kualitas perhiasan emas sangat luar biasa, dan kerajinan tangannya terlihat jelas di setiap detail.
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">S</div>
                         <div class="testimonial-info">
                             <p class="testimonial-name">Sarah Johnson</p>
-                            <p class="testimonial-detail">Verified Customer</p>
+                            <p class="testimonial-detail">Pelanggan Terverifikasi</p>
                         </div>
                     </div>
                 </div>
@@ -266,13 +266,13 @@
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <p class="testimonial-text">
-                        Best investment! I've purchased multiple pieces and each one is more beautiful than the last.
+                        Investasi terbaik! Saya telah membeli beberapa karya dan setiap satu lebih indah dari yang lain.
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">M</div>
                         <div class="testimonial-info">
                             <p class="testimonial-name">Michael Chen</p>
-                            <p class="testimonial-detail">Verified Customer</p>
+                            <p class="testimonial-detail">Pelanggan Terverifikasi</p>
                         </div>
                     </div>
                 </div>
@@ -282,13 +282,13 @@
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <p class="testimonial-text">
-                        Exceptional service and gorgeous jewelry. Highly recommended to anyone looking for premium quality!
+                        Layanan luar biasa dan perhiasan yang indah. Sangat direkomendasikan untuk siapa pun yang mencari kualitas premium!
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">E</div>
                         <div class="testimonial-info">
                             <p class="testimonial-name">Emily Rodriguez</p>
-                            <p class="testimonial-detail">Verified Customer</p>
+                            <p class="testimonial-detail">Pelanggan Terverifikasi</p>
                         </div>
                     </div>
                 </div>
@@ -296,39 +296,39 @@
         </div>
     </section>
     
-    <!-- Contact Section -->
+    <!-- Contact Section with Map -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-content">
-                    <p class="text-label">Get In Touch</p>
+                    <p class="text-label">Hubungi Kami</p>
                     <h2 class="heading-display contact-title">
-                        Contact Us
+                        Hubungi Kami
                     </h2>
                     <p class="text-body contact-text">
-                        Have questions about our collection or need assistance? 
-                        We're here to help make your shopping experience exceptional.
+                        Punya pertanyaan tentang koleksi kami atau butuh bantuan? 
+                        Kami siap membantu membuat pengalaman belanja Anda luar biasa.
                     </p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <p class="contact-item-label">Address</p>
+                            <p class="contact-item-label">Alamat</p>
                             <p class="contact-item-value">
-                                123 Golden Street<br>
-                                Luxury District, NY 10001
+                                Yogyakarta<br>
+                                Indonesia
                             </p>
                         </div>
                         <div class="contact-item">
-                            <p class="contact-item-label">Hours</p>
+                            <p class="contact-item-label">Jam Operasional</p>
                             <p class="contact-item-value">
-                                Monday – Saturday, 10:00 AM to 06:00 PM<br>
-                                Sunday, By Appointment
+                                Senin – Sabtu, 10:00 - 18:00<br>
+                                Minggu, Dengan Perjanjian
                             </p>
                         </div>
                         <div class="contact-item">
-                            <p class="contact-item-label">Contact</p>
+                            <p class="contact-item-label">Kontak</p>
                             <p class="contact-item-value">
-                                <a href="tel:+1234567890">+1 (234) 567-890</a><br>
+                                <a href="tel:+628123456789">+62 (812) 345-6789</a><br>
                                 <a href="mailto:info@haavkspace.com">info@haavkspace.com</a>
                             </p>
                         </div>
@@ -336,27 +336,33 @@
                 </div>
                 
                 <div class="contact-form-wrapper">
-                    <h3 class="form-title">Send Message</h3>
+                    <h3 class="form-title">Kirim Pesan</h3>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label class="form-label" for="name">Full Name</label>
+                            <label class="form-label" for="name">Nama Lengkap</label>
                             <input type="text" id="name" name="name" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="email">Email Address</label>
+                            <label class="form-label" for="email">Alamat Email</label>
                             <input type="email" id="email" name="email" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="phone">Phone Number</label>
+                            <label class="form-label" for="phone">Nomor Telepon</label>
                             <input type="tel" id="phone" name="phone" class="form-input">
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="message">Your Message</label>
-                            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your inquiry..."></textarea>
+                            <label class="form-label" for="message">Pesan Anda</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Ceritakan tentang pertanyaan Anda..."></textarea>
                         </div>
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <button type="submit" class="form-submit">Kirim Pesan</button>
                     </form>
                 </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="map-section">
+                <h3 class="map-title">Lokasi Kami</h3>
+                <div id="map" class="map-container"></div>
             </div>
         </div>
     </section>
@@ -368,52 +374,51 @@
                 <div class="footer-brand">
                     <p class="footer-logo">HAAVK <span>SPACE</span></p>
                     <p class="footer-tagline">
-                        Premium gold jewelry where fortune meets elegance. 
-                        Handcrafted with excellence since day one.
+                        Perhiasan emas premium tempat keberuntungan bertemu elegansi. 
+                        Dibuat dengan keunggulan sejak hari pertama.
                     </p>
                     <div class="footer-contact-info">
-                        <p>123 Golden Street, Luxury District</p>
-                        <p>New York, NY 10001</p>
-                        <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        <p>Yogyakarta, Indonesia</p>
+                        <p><a href="tel:+628123456789">+62 (812) 345-6789</a></p>
                         <p><a href="mailto:info@haavkspace.com">info@haavkspace.com</a></p>
                     </div>
                 </div>
                 
                 <div class="footer-column">
-                    <h4 class="footer-column-title">Collections</h4>
+                    <h4 class="footer-column-title">Koleksi</h4>
                     <ul class="footer-links">
-                        <li><a href="#collections">All Collections</a></li>
-                        <li><a href="#">Bridal</a></li>
-                        <li><a href="#">Daily Wear</a></li>
-                        <li><a href="#">Statement</a></li>
-                        <li><a href="#">Men's</a></li>
+                        <li><a href="#collections">Semua Koleksi</a></li>
+                        <li><a href="#">Pernikahan</a></li>
+                        <li><a href="#">Sehari-hari</a></li>
+                        <li><a href="#">Pernyataan</a></li>
+                        <li><a href="#">Pria</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h4 class="footer-column-title">Company</h4>
+                    <h4 class="footer-column-title">Perusahaan</h4>
                     <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#">Craftsmanship</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Custom Design</a></li>
-                        <li><a href="#">Care Guide</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#">Kerajinan Tangan</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                        <li><a href="#">Desain Khusus</a></li>
+                        <li><a href="#">Panduan Perawatan</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h4 class="footer-column-title">Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Info Pengiriman</a></li>
+                        <li><a href="#">Pengembalian</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 HAAVK SPACE. All rights reserved.</p>
+                <p class="footer-copyright">© 2026 HAAVK SPACE. Semua hak dilindungi.</p>
                 <div class="footer-social">
                     <a href="#">Instagram</a>
                     <a href="#">Facebook</a>
@@ -423,6 +428,8 @@
         </div>
     </footer>
 
+    <!-- Map script -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
