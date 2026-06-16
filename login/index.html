@@ -158,11 +158,15 @@
             users.push(newUser);
             localStorage.setItem('haavk_users', JSON.stringify(users));
             
-            alert('Akun berhasil dibuat! Silakan masuk.');
-            toggleForms();
+            // Auto login setelah registrasi
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', fullname);
             
-            // Clear form
-            document.getElementById('registerForm').reset();
+            alert('Akun berhasil dibuat! Mengalihkan ke halaman utama...');
+            
+            // Redirect ke halaman utama
+            window.location.href = '../index.html';
         }
         
         // Check if already logged in
